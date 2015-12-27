@@ -1,0 +1,5 @@
+1,vim
+2,$ qmake-project
+3,$ qmake
+4,$ make/gmake/nmake
+5, ./release/
