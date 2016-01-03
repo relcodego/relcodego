@@ -1,0 +1,14 @@
+1,安装openssh，创建ssh：$ssh-keygen    （不要设置文件名称）
+2,到github上添加ssh keys( 在setting中） ，key的内容为～/.ssh/id_rsa.pub
+的内容）
+3,配置git： git config --global user.name relcodego
+            git config --global user.email relcodego@outlook.com
+4,上传本地文件：
+    1，cd 目录  git init
+    2, git remote add origin git@github.com:relcodego/relcodego.git
+    3,git add filename
+    4,git commit -m " dsfdslkfjsd"
+    5,git push origin master
+    6,合并分支：git pull origin master
+下载：git clone https://github.com/relcodego/relcodego.git
+
