@@ -1,0 +1,33 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-06T20:40:36+08:00
+
+====== function ======
+Created 星期三 06 一月 2016
+ 
+sizeof()   size_t   %zd  %u %lu
+
+strlen()
+
+char shuzu[20];
+scanf("%s",shuzu);
+
+size = sizeof(shuzu);		以字节为单位，给出数据的大小。
+a = strlen(name);    以字符为单位，获取字符串长度，不包含结尾的\0。
+
+scanf() 遇到空格break，制表符tab，换行符newline 停止读取。
+
+#define a 100
+
+pow(a,b)    返回a的b次幂
+	
+fabs()	浮点数判断，返回一个浮点值的绝对值
+
+    
+getchar()
+putchar()
+ch = getchar(); → scanf("%c",&ch);
+putchar(ch) → printf("%c",ch)
+
+
+
