@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-06T10:09:55+08:00
+
+====== qt c++ ======
+Created 星期三 06 一月 2016
+
+打开QtCreator，文件->新建文件或项目->Application->Qt 控制台应用
+
+建好工程之后，在main.cpp
+
+文件中就可以编写C++控制台应用程序了
+
+譬如：main.cpp内容如下：
+#include <QCoreApplication>
+#include <iostream>
+ 
+int main(int argc, char *argv[])
+{
+	QCoreApplication a(argc, argv);
+ 
+	std::cout<<"Hello World!"<<std::endl;
+ 
+ 
+	return a.exec();
+}

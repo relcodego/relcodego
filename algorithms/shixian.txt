@@ -1,0 +1,218 @@
+
+线性表：
+    ////////动态分配，顺序存储结构
+    #define LIST_INIT_SIZE 100
+    #define LISTINCREMENT 10
+    typedef struct{
+        Elemtype * elem;    //存储空间基址
+        int length;         //当前长度
+        int listsize;       //当前分配的存储容量，以元素为单位
+    }Sqlist;
+
+
+    //////单链表存储结构
+    typedef struct LNode{
+        Elemtype data;          // 数据域
+        struct LNode * next;    //指针域
+    }LNode, *Linklist;
+
+
+    ///////静态单链表存储结构
+    #define MAXSIZE 1000
+    typedef struct{
+        Elemtype data;
+        int cur;
+    }componet, Slinklist[MAXSIZE];
+
+    ////双向链表
+    typedef struct DuLNode{
+        Elemtype data;
+        struct DuLNode  *prior;
+        struct DuLNode  *next;
+    }DuLNode, *Dulinklist;
+
+
+    /////带头结点的线性链表
+    typedef struct LNode{
+        Elemtype data;
+        struct LNode *next;
+        } *Link,*Position;
+    typedef struct{
+        Link head , tail;
+        int len;
+    }LinkList;
+
+
+栈：
+    /////顺序栈
+    typedef struct{
+        Elemtype *base;
+        Elemtype *top;
+        int stacksize;
+    }SqStack;
+
+队列：
+    ///单链队列
+    typedef struct QNode{
+        Elemtype data;
+        struct QNode *next;
+    }QNode, *Queueptr;
+    typedef struct{
+        Queueptr front;
+        Queueptr rear;
+    }LinkQueue;
+
+    //////循环队列
+    typedef struct{
+        Elemtype *base;
+        int front;
+        int rear;
+    }SqQueue;
+
+串：
+    /////定长顺序存储表示
+    #define MAXSTRLEN 255
+    typedef unsigned char SString[MAXSTRLEN];
+
+    ////串的堆分配存储表示
+    typedef struct{
+        char *ch;
+        int length;
+    }HSting;
+
+    ////串的块链存储表示
+    #define CHUNKSIZE 80
+    typedef struct Chunk{
+        char ch[CHUNKSIZE];
+        struct Chunk *next;
+    }Chunk;
+    typedef struct{
+        Chunk *head,*tail;
+        int curlen;
+    }LString;
+
+
+
+数组：
+    ///顺序存储表示
+    typedef struct{
+        Elemtype *base;     //数组元素基址，由InitArray（）分配
+        int dim;            //数组维数
+        int *bounds;        //数组维界基址，由InitArray（）分配
+        int *constants;     //数组映像函数常量基址，由InitArray（）分配
+    }Array;
+
+    Status InitArray(Array & A,int dim,...){
+        ...}
+
+
+广义表：
+    ///头尾链表存储表示
+    typedef enum{ATOM,LIST}ElemTag;         //ATOM=0:原子，LIST=1：子表
+    typedef struct GLNode{
+        ElemTag tag;                        //
+        公共部分，用于区分原子结点和表结点
+        union{                              //原子结点和表结点的联合部分
+            AtomType atom;
+            //atom是原子结点的值域，AtomType由用户定义。
+            struct{struct GLNode *hp,*tp;}ptr;
+            //ptr是表结点的指针域，ptr.hp和ptr.tp分别指向表头和表尾。
+        };
+    }*GList;
+
+
+    ///广义表的扩展线性链表存储表示
+    typedef enum{ATOM,LIST}ElemTag;
+    typedef struct GLNode{
+        ElemTag tag;
+        union {
+            AtomType atom;
+            struct GLNode *hp;
+        };
+        struct GLNode *tp;  //相当于线性链表的next，指向下一个元素结点。
+    } *GList;
+
+
+m元多项式的表示：
+    typedef struct MPNode{
+        ElemTag tag;
+        int exp;                    //指数域
+        union{
+            float coef;             //系数域
+            struct MPNode *hp;      //表头指针
+        };
+        struct MPNode *tp;            // 指向下一个元素结点
+    } *MPList;
+
+
+
+树：
+
+二叉树：
+    ////顺序存储
+    #define max_tree_size 100                   //二叉树的最大结点数
+    typedef Elemtype SqBiTree[max_tree_size];   //0号单元存储根结点
+    SqBiTree bt;
+
+    ////二叉链表存储表示
+    typedef struct BiTNode{
+        Elemtype data;
+        struct BiTNode *lchild,*rchild;  
+    }BiTNode, *BiTree;
+
+
+    //二叉线索存储表示
+    typedef enum PointerTag { Link,Thread}; // link=0:zhizhen,thread=1:xiansuo
+    typedef struct BiThrNode{
+        Elemtype data;
+        struct BiThrNode *lchild,*rchild;   //左右孩子指针
+        PointerTag LTag,Rtag;       //左右标志
+    }BiThrNode,*BiThrTree;
+
+
+树：
+    //树的双亲表存储表示
+    #define max_tree_size 100
+    typedef struct PTNode{
+        Elemtype data;
+        int parent; //双亲位置域
+    }PTNode;
+    typedef struct{             //树结构
+        PTNode nodes[max_tree_size];
+        int r,n;        //根的位置和结点数
+    }PTree;
+
+
+    ///树的孩子链表
+    typedef struct CTNode{  //haizijiedian
+        int child;
+        struct CTNode *next;
+    }*ChildPtr;
+    typedef struct{
+        Elemtype data;
+        ChildPtr firstchild;    //孩子链表头指针
+    }CTBox;
+    typedef struct{
+        CTBox nodes[max_tree_size];
+        int n,r;    
+    }CTree;
+
+
+    ////二叉链表存储表示
+    typedef struct CSNode{
+        Elemtype data;
+        struct CSNode *fistchild,*nextsibling;
+    }CSNode,*CSTree;
+
+    ///ADT MFSet 的树的双亲表
+    typedef PTree MFSet;
+
+
+    ///////////赫夫曼树
+    typedef struct{
+        unsigned int weight;
+        unsigned int parent,lchild,rchild;
+    }HTNode,*HuffmanTree;           //动态分配数组存储赫树
+    typedef char * * HuffmanCode;   //动态分配数组存储赫夫曼编码表
+    
+

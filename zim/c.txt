@@ -1,0 +1,18 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-05T19:32:54+08:00
+
+====== c ======
+Created 星期二 05 一月 2016
+
+#include  预处理器命令 preprocssor directive
+头文件：	指引编译器把程序正确的组合在一起。
+
+#include <stdio.h> 		预处理
+int main(void)			main函数
+{
+	int a ;			声明语句 ， a 标识符 变量名
+	scanf("%d",&a);	 
+	printf("%d",a);
+	return 0;
+}

@@ -1,0 +1,90 @@
+!!$HOME/.Xdefaults
+URxvt.preeditType:Root
+
+!!调整此处设置输入法
+URxvt.inputMethod:fcitx
+
+!!颜色设置
+URxvt.depth:32
+!!中括号内数表示透明度
+URxvt.background:[90]#000000
+URxvt.foreground:#ffffff
+URxvt.colorBD:Gray95
+URxvt.colorUL:Green
+
+URxvt.color1:Red2
+URxvt.color4:RoyalBlue
+URxvt.color5:Magenta2
+URxvt.color8:Gray50
+URxvt.color10:Green2
+URxvt.color12:DodgerBlue
+URxvt.color14:Cyan2
+URxvt.color15:Gray95
+
+!!URL操作
+URxvt.urlLauncher:firefox
+!URxvt.matcher.button:1
+!Urxvt.perl-ext-common:matcher
+
+!!滚动条设置
+URxvt.scrollBar:True
+URxvt.scrollBar_right:True
+URxvt.scrollBar_floating:False
+URxvt.scrollstyle:plain
+!!滚屏设置
+URxvt.mouseWheelScrollPage:False
+URxvt.scrollTtyOutput:False
+URxvt.scrollWithBuffer:True
+URxvt.scrollTtyKeypress:True
+URxvt.secondaryScroll: true
+
+!!光标闪烁
+URxvt.cursorBlink:True
+URxvt.cursorColor: White
+!!!鼠标下划线
+URxvt.cursorUnderline: True  
+URxvt.saveLines:3000
+!!边框
+URxvt.borderLess:False
+
+!url
+URxvt.perl-ext-common: default,tabbed,matcher
+URxvt.matcher.button:1
+
+!tabs
+URxvt.tabbed.tab-fg: 12
+URxvt.tabbed.tab-bg: 0
+URxvt.tabbed.tabbar-fg: 4
+!默认支持鼠标点击使用，快捷键如下：
+!Shift+ ↓ new tab
+!Shift+ ← go to left tab
+!Shift+ → go to right tab
+!Ctrl+ ← move tab to the left
+!Ctrl+ → move tab to the right
+!Ctrl+D: close tab 
+
+URxvt.visualBell: False
+URxvt.inheritPixmap: true
+URxvt.tintCddolor: white
+URxvt.shading: 80 
+URxvt.fading: 60
+!!!边框颜色
+URxvt.fadeColor: White   
+URxvt.colorIT: red 
+URxvt.underlineColor: blue
+URxvt.multichar_encoding: utf-8
+URxvt.imLocale: zh_CN.UTF-8
+
+URxvt.pointerBlank: true
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+URxvt*letterSpace: -1  
+URxvt.internalBorder: 3
+URxvt.lineSpace: 0
+
+!!字体设置
+Xft.dpi:96
+URxvt.font:xft:文泉驿等宽微米黑:size=12:style=Regular:antialias=true,xft:文泉驿等宽微米黑:size=11:style=Regular:antialias=true
+URxvt.boldfont:xft:文泉驿等宽微米黑:size=12:style=BOld:antialias=true,xft:文泉驿等宽微米黑:size=11:style=Bold:antialias=true
+
+

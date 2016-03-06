@@ -1,0 +1,26 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-09T20:21:52+08:00
+
+====== cout控制符 ======
+Created 星期六 09 一月 2016
+
+　#include <iomanip>
+控制符---描 述
+　　dec --- 置基数为10，后由十进制输出（系统默认形式）
+　　hex --- 置基数为16，后由十六进制输出
+　　oct --- 置基数为8，后由八进制输出
+　　setfill(c) --- 设填充字符为c
+　　setprecision(n) --- 设置实数的精度为n位
+　　setw(n) --- 设域宽为n个字符
+　　setiosflags(ios::fixed) --- 固定的浮点显示
+　　setiosflags(ios::scientific) --- 指数表示
+　　setiosflags(ios::left) --- 左对齐
+　　setiosflags(ios::right) --- 右对齐
+　　setiosflags(ios::skipws) --- 忽略前导空白
+　　setiosflags(ios::uppercase) --- 16进制数大写输出
+　　setiosflags(ios::lowercase) ---16进制数小写输出
+其中：setw设置域宽，使用一次就得设置一次，其他的函数，设置一次永久有效
+
+  cout<<setiosflags(ios::fixed)<<setprecision(4);
+setiosflags(ios::fixed)主要是将流的格式设置为：fixed(将一个浮点数表示为一个定点整数和小数点和小数部分的格式)。然后setprecision(4)表示小数部分的精度为4位

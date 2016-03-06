@@ -1,0 +1,25 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-28T17:49:25+08:00
+
+====== first ======
+Created 星期四 28 一月 2016
+
+ 
+#include <QApplication>     引入的是 QApplication 以及 QLabel 这两个类
+#include <QLabel>
+int main(int argc, char *argv[])
+{
+QApplication app(argc, argv);  创建一个 QApplication 类的实例
+QLabel label("Hello, world");  直接创建一个 QLabel 对象，构造函数赋值“Hello, world”
+label.show();
+return app.exec();   开启事件循环
+}
+
+
+QPushButton button("Quit");
+QObject::connect(&button, &QPushButton::clicked, &QApplication::quit);
+button.show();
+
+
+在 pro 文件中添加这么一句：QMAKE_CXXFLAGS += -std=c++0x

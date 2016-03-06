@@ -1,0 +1,9 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-01-05T21:27:37+08:00
+
+====== 数据类型 ======
+Created 星期二 05 一月 2016
+
+int 一般存储在一个字中
+最小范围：-32768.....32767
