@@ -1,0 +1,6 @@
+
+
+
+TEMPLATE = app
+TARGET = 12
+INCLUDEPATH += .
