@@ -1,0 +1,9 @@
+QT += widgets   :在 qmake 命令里面指定添加的 QtWidgets 模块（即 widgets）
+TEMPLATE = app  :代表生成的目标程序类型模板，app 是可执行的应用程序
+TARGET = hello  :TARGET 指定目标程序的名字，
+INCLUDEPATH += .    :将当前目录（.）添加到了包含路径（INCLUDEPATH）里
+HEADERS += hello.h  :HEADERS 就是指定项目里的头文件。 
+SOUTCES += hello.cpp main.cpp   :SOURCES 就是指定项目里的源代码文件。
+“=”是赋值，左边的变量会被指定为右边的值，并且仅仅是右边的值；“+=”是追加的意思，
+pro 文件可以通过 qmake 生成，或者手动编写 pro 文件也行。
+qmake 又可以按照 pro 文件的内容生成 Makefile，然后使用 make 构建目标程序。
