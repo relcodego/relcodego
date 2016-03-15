@@ -1,1 +1,0 @@
-/home/relcodego/git/qt/qtcreator/build-helloworld-unknown-Default/CMakeFiles/helloworld.dir
