@@ -1,10 +1,11 @@
-#ifndef UI_GOTOCELLDIALOG_H
-#define UI_GOTOCELLDIALOG_H
-#include <QtGui>
+#ifndef  GOTOCELLDIALOG_H
+#define  GOTOCELLDIALOG_H
+
 #include <QDialog>
+
 #include "ui_gotocelldialog.h"
 
-class GoToCellDialog : public QDialog,public Ui::GoToCellDialog
+class GoToCellDialog: public QDialog,public Ui_GoToCellDialog
 {
     Q_OBJECT
 public:
