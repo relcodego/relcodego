@@ -3,12 +3,13 @@ void init();
 void display();
 int main(int argc, char* argv[])
 {
-  glutInit(&argc, argv);
+ 	glutInit(&argc, argv);
         glutInitDisplayMode(GLUT_RGB | GLUT_SINGLE);
         glutInitWindowPosition(0, 0);
         glutInitWindowSize(300, 300);
         glutCreateWindow("OpenGL 3D View");
-        init(); glutDisplayFunc(display);
+        init(); 
+	glutDisplayFunc(display);
         glutMainLoop();
         return 0;
 }

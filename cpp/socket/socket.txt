@@ -1,0 +1,204 @@
+ 套接字相关的数据类型：sockaddr和sockaddr_in；sockaddr用来保存一个套接字，定义如下：
+
+struct sockaddr
+{
+    unsigned short int sa_family; //指定通信地址类型，如果是TCP/IP通信，则值为AF_inet
+    char sa_data[14]; //最多用14个字符长度，用来保存IP地址和端口信息
+};
+
+　　sockaddr_in的功能与socdaddr相同，也是用来保存一个套接字的信息，不同的是将IP地址与端口分开为不同的成员，定义如下：
+
+struct sockaddr_in
+{
+    unsigned short int sin_family; //指定通信地址类型
+    uint16_t sin_port; //套接字使用的端口号
+    struct in_addr sin_addr; //需要访问的IP地址
+    unsigned char sin_zero[8]; //未使用的字段，填充为0
+};
+
+　　在这一结构中，in_addr也是一个结构体，定义如下，用于保存一个IP地址：
+
+struct in_addr
+{
+    uint32_t  s_addt;
+};
+
+　　用域名取得主机的IP地址：
+
+struct hostent *gethostbyname(const char *name);
+
+　　结构体hostent的定义如下：
+
+struct hostent
+{
+    char *h_name;//正式的主机名称
+    char **h_aliases;//这个主机的别名
+    int  h_addrtype;//主机名的类型
+    int  h_length;//地址的长度
+    char **h_addr_list;//从域名服务器取得的主机地址
+}；
+
+　　用IP地址返回域名：
+
+struct hostent *gethostbyaddr(const void *addr,socklen_t len,int type);
+
+　　由协议名取的协议数据：
+
+struct protoent *getprotobyname(char *name);
+
+　　结构体protoent定义如下：
+
+struct protoent
+{
+   char *p_name;//协议的名称
+   char **p_aliases;//协议的别名
+   int p_proto;//协议的序号
+}；
+
+　　由协议编号取得协议信息：
+
+struct protoent *getprotobynumber(int proto);
+
+　　取得系统支持的所有协议：
+
+struct protoent *getprotoent(void);
+
+　　取得系统支持的网络服务：
+
+struct servent *getservent(void);
+
+　　结构体servent定义如下：
+
+struct servent
+{
+   char *s_name;//这个服务的名称
+   char **s_aliases;//这个服务可能的别名
+   int s_port;//这个服务可能的端口
+   char *s_proto;//这个服务可能使用的协议
+};
+
+　　用名称取得系统所支持的服务：
+
+struct servent *getservbyname(char *name,char *proto); //name：服务器名称，proto服务器所使用的协议；
+
+　　由端口取得服务名称：
+
+struct servent *getservbyport(int port,char *proto)
+//port是端口的编号，需要注意的是这个端口号需要用htons()函数进行转换，proto表示一个协议的字符串；
+
+　　将网络地址转换成长整型：
+
+long inet_addr(char *cp); //cp表示一个IP地址字符串；
+
+　　将长整型IP地址转换成网络地址即大小端模式转换：
+
+char *inet_ntoa(struct in_addr in);
+
+　　将计算机中的32位长整型数转换成网络字符顺序的32位长整型数：
+
+uint32_t htonl(uint32_t hostlong)；
+
+　　将计算机中的16位整型数转换成网络字符顺序的16位整型数：
+
+uint16_t htons(uint16_t hostshort)；
+
+　　将网络字符顺序的32位长整型数转换成计算机中的32位长整型数：
+
+uint32_t ntohl(uint32_t netlong)；
+
+　　将网络字符顺序的16位整型数转换成计算机中的16位整型数：
+
+uint16_t ntohs(uint16_t netshort)；
+
+　　herror函数显示错误：
+
+void herror(const char *S); //s是一个字符串，函数先输出这个字符串，然后输出错误信息
+
+　　创建套接字函数：
+
+int socket(int domain,int type,int protocol);
+//参数domain用于指定创建套接字所使用的协议族（可取AF_UNIX,AF_INET,AF_INTE6）
+//参数type指定套接字的类型（可取SOCK_STREAM,SOCK_DGRAM,SOCK_RAW）
+//参数protocol通常设置为0
+
+　　在指定套接字上创建链接函数：
+
+int connect(int sockfd,const struct sockaddr *serv_addr,socklen_t addrlen);
+//参数sockfd是一个由函数socket创建的套接字
+//参数serv_addr是一个地址结构，指定服务器的IP地址和端口号
+//参数addrlen为参数serv_addr的长度
+
+　　将一个套接字和某个端口绑定在一起的函数：
+
+int bind(int sockfd,struct sockaddr *my_addr,socklen_t addrlen);
+//一般只有服务器端的程序调用，参数my_addr指定了sockfd将绑定到的本地地址，可以将参数my_addr的sin_addr设置为INADDR_ANY而不是某个确定IP地址就可以绑定到任何网络接口。
+
+　　把套接字转化为被动监听函数：
+
+int listen(int s,int backlog);
+//参数s为套接字，参数backlog指定链接请求队列的最大长度；
+
+　　接收连接请求函数：
+
+int accept(int s,struct sockaddr *addr,socklen_t *addrlen);
+//参数s是由函数socket创建，经函数bind绑定到本地某一端口上，然后通过函数listen转化而来的监听套接字
+//参数addr用来保存发起连接请求的主机的地址和端口
+//参数addrlen是addr所指向的结构体的大小
+
+　　在TCP套接字上发送数据函数：
+
+ssize_t send(int s,const void *msg,size_t len,int flags);
+//函数只能对处于连接状态的套接字使用，参数s为已建立好连接的套接字描述符，即accept函数的返回值
+//参数msg指向存放待发送数据的缓冲区
+//参数len为待发送数据的长度，参数flags为控制选项，一般设置为0
+
+　　在TCP套接字上接收数据函数：
+
+ssize_t recv(int s,void *buf,size_t len,int flags);
+//函数recv从参数s所指定的套接字描述符（必须是面向连接的套接字）上接收数据并保存到参数buf所指定的缓冲区
+//参数len则为缓冲区长度，参数flags为控制选项，一般设置为0
+
+　　在UCP套接字上发送数据函数：
+
+ssize_t sendto(int s,const void *msg,size_t len,int flags,const struct sockaddr *to,socklen_t tolen);
+//函数功能与函数send类似，但函数sendto不需要套接字处于连接状态，所以该函数通常用来发送UDP数据，同时因为是无连接的套接字，在使用sendto时需要指定数据的目的地址，参数msg指向待发送数据的缓冲区。
+//参数len指定了待发送数据的长度
+//参数flags是控制选项，含义与send函数中的一致
+//参数to用于指定目的地址，目的地址的长度由tolen指定
+
+　　在UDP套接字上接收数据函数：
+
+ssize_t recvfrom(int s ,void *buf,size_t len,int flags,struct sockaddr *from,socklen_t *fromlen);
+//与函数recv功能类似，只是函数recv只能用于面向连接的套接字，而函数recvfrom没有此限制，可以用于从无连接的套接字上接收数据
+//参数buf指向接收缓冲区
+//参数len指定了缓冲区的大小
+//参数flags是控制选项，含义与recv中的一致
+//如果参数from非空，且该套接字不是面向连接的，则函数recvfrom返回时，参数from中将保存数据的源地址
+//参数fromlen在调用recvfrom前为参数from的长度，调用recvfrom后将保存from的实际大小
+
+　　关闭套接字函数：
+
+int close(int fd);
+//参数fd为一个套接字描述符；
+
+　　函数 int shutdown(int s,int how) 功能与close类似，但是shutdown功能更强大，它允许对套接字进行单向关闭或全部禁止，参数s为待关闭的套接字描述符，参数how指定了关闭的方式。　　
+
+　　inet系列函数用于网络地址的格式转换；获取和设置套接字属性函数：
+
+int getsockopt(int s,int level,int optname,void *optval,cocklen_t *optlen);
+int setsockopt(int s,int level,int optname,const void *optval,socklen_t optlen);
+//参数s为一个套接字
+//参数level是进行套接字选项操作的层次
+//参数optname是套接字选项名称
+//对于函数getsockopt，参数opval用来存放获得的套接字选项，参数optlen在调用函数前其值为optval指向的空间的大小，调用完后则其值为参数optval所保存的结果的实际大小
+//对于函数setsockopt，参数optval是待设置的套接字选项的值，参数optlen是选项的长度
+
+　　多路复用函数：
+
+int select(int n,fd_set *readfds,fd_set *writefds,fd_set *exceptfds,struct timeval *timeout);
+//参数n是需要监视的文件描述符数
+//参数readfds指定需要监视的可读文件描述符集合
+//参数writefds指定需要监视的可写文件描述符集合
+//参数exceptfds指定需要监视的异常文件描述符的集合
+//参数timeout指定了阻塞的时间
+
