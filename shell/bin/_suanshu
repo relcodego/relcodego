@@ -1,0 +1,18 @@
+
+#!/bin/sh
+
+a=$[234+3487]
+echo $a
+
+b=`bc << EOF
+  328+4325.987 
+EOF
+`
+c=`bc << EOF
+  328+4325.987 
+  324-321
+EOF
+`
+echo $b
+echo $c
+   exit 0

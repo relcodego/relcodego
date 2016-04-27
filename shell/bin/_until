@@ -1,0 +1,9 @@
+
+#!/bin/sh
+
+a=3
+until test $a -lt 0; 
+do
+echo $a
+a=`expr $a - 1`
+done

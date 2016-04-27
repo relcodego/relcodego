@@ -1,0 +1,10 @@
+
+#!/bin/bash
+trap "echo fdsaj" SIGINT
+a=1
+while [ $a -lt 6 ]
+    do
+a=`expr  $a + 1 `
+    echo asdflj
+    sleep 4
+    done

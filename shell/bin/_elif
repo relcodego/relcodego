@@ -1,0 +1,12 @@
+
+#!/bin/bash
+
+read a b
+if test $a -eq $b ; then
+    echo "=="
+    elif test $a -gt $b ; then
+    echo ">"
+    else
+        echo "<"
+        fi
+    

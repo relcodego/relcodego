@@ -1,0 +1,32 @@
+
+#!/bin/sh
+if [ -n "$1" ] ; then 
+echo $1
+else
+echo "fks"
+fi
+
+echo "命令行参数个数：$#"
+echo  "最后一个参数："
+echo ${!#}
+echo "把所有参数当成一个字符串处理：\"\$*\""
+for a in "$*"
+do
+echo $a
+done
+
+echo "没有双引号：\$*"
+for a in $*
+do
+echo $a
+done
+echo "把参数当成同一个字符串中的多个单词处理：\$@"
+for a in $@
+do
+echo $a
+done
+
+echo
+echo
+echo ${!#}
+echo ${$#}

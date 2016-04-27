@@ -1,0 +1,8 @@
+
+#!/bin/bash
+read a b 
+if [ $a -eq $b ] ;
+then
+echo "=="
+fi
+

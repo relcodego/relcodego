@@ -1,0 +1,9 @@
+
+#!/bin/bash
+clear
+echo 
+echo -e "\t\tsfdkkfljds\n"
+echo -e "\t1. sdflk"
+echo -e "\t2. sljfl"
+echo -en "\t\tdslkj"
+

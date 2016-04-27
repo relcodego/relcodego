@@ -1,0 +1,11 @@
+
+#!/bin/bash
+read a
+if test 3 -eq $a;then 
+    echo 3
+fi
+
+read str
+if [[ $str = r* ]] ; then 
+    echo "r*"
+    fi

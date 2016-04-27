@@ -1,0 +1,6 @@
+
+#assign
+a="dshlewj"
+#print
+printf '%s\n' "A is : $a"
+

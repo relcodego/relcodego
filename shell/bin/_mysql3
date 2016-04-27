@@ -1,0 +1,9 @@
+
+#!/bin/bash
+
+MYSQL=`which mysql`
+
+$MYSQL scDB -u relcodego <<EOF
+show tables;
+select * from Student ;
+EOF

@@ -1,0 +1,23 @@
+
+#!/bin/bash
+set -- `getopt -q ab:c "$@"`
+while [ -n "$1" ] 
+    do
+        case "$1" in 
+        -a) echo "-a" ;;
+        -b) param="$2"
+        echo "-b , param $param"
+        shift;;
+        -c) echo "-c'";;
+        --) shift
+        break;;
+        *) echo "no";;
+        esac
+        shift
+        done
+        count=1
+        for param in "$@"
+            do
+                echo " #$count : $param"
+                count=$[ $count + 1 ]
+                done

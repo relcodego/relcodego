@@ -1,0 +1,9 @@
+
+#!/bin/bash
+
+num=1
+if [ $num = 1 ] ; then
+    echo " num is 1"
+    else
+        echo "sd"
+        fi

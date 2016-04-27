@@ -1,0 +1,6 @@
+#!/bin/sh
+var1=` bc << EOF
+18.33 * 19.78
+EOF
+`
+echo $var1

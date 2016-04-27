@@ -1,0 +1,4 @@
+
+#!/bin/bash
+basename $0
+echo $0

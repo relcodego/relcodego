@@ -1,0 +1,5 @@
+
+#!/bin/bash
+echo -e "^[[1mdfsljfds^[[44;33m"
+echo "^[[0m"
+

@@ -1,0 +1,18 @@
+
+#!/bin/bash
+
+select a in "b" "c" "d"
+do
+    case $a in
+    "b")
+    break;;
+    "c")
+    echo "c";;
+    "d")
+    echo "d";;
+    *)
+    clear;;
+    esac
+    done
+    echo "dddd"
+
