@@ -1,0 +1,5 @@
+
+--fileL: hello world.hs
+
+main = putStrLn "hello\n"
+
